@@ -3,7 +3,9 @@ import * as Tweets from '../data/tweets.js'
 
 export async function getTweets (req, res, next) {
     const username = req.query.username;
-    const data = await (username ? Tweets.getUsername(username) : Tweets.getAll())
+    const data = await (username 
+      ? Tweets.getUsername(username) 
+      : Tweets.getAll())
     res.status(200).json(data)
 }
 

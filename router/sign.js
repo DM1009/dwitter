@@ -22,11 +22,11 @@ const validateUsername = [
 
 const validateSignup = [
   ...validateUsername,
-  body('name').notEmpty().withMessage('name is missing'),
-  body('email').isEmail().normalizeEmail().withMessage('invalid email'),
+  body('name').notEmpty().withMessage('이름을 입력하세요'),
+  body('email').isEmail().normalizeEmail().withMessage('이메일 형식이 올바르지 않습니다'),
   body('url')
     .isURL()
-    .withMessage('invalid URL')
+    .withMessage('URL형식이 올바르지 않습니다')
     .optional({ nullable: true, checkFalsy: true }),
   validate,
 ];

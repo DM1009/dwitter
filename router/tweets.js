@@ -5,8 +5,9 @@ import * as tweetController from '../controller/tweets.js';
 import { isAuth } from '../middleware/sign.js';
 import { validate } from '../middleware/validator.js';
 
-const router = express.Router()
-const validateTweet = [
+const router = express.Router();
+
+const validateTweet = [ 
     body('text')
       .trim()
       .isLength({ min: 3 })
@@ -14,7 +15,7 @@ const validateTweet = [
     validate,
   ];
 
-router.get('/', isAuth)
+router.get('/', isAuth, tweetController.getTweets)
 
 router.get('/:id', isAuth, tweetController.getTweet);
 

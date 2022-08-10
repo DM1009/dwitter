@@ -9,6 +9,7 @@ import helmet from 'helmet';
 import {db} from './db/database.js';
 
 
+
 const app = express()
 
 app.use(express.json());
@@ -31,4 +32,7 @@ app.use((req, res, next) => {
 
   db.getConnection()
   .then((connection) => console.log(connection))
-app.listen(config.host.port)
+
+app.listen(8080)
+
+
