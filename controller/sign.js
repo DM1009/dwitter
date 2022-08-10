@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
 import {} from 'express-async-errors';
-import * as Users from '../data/auth.js';
+import * as Users from '../data/sign.js';
 import { config } from '../config.js';
 
 export async function signup(req, res) {

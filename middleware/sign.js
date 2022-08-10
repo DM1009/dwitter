@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
 import { config } from '../config.js';
-import * as Users from '../data/auth.js';
+import * as Users from '../data/sign.js';
 
 const AUTH_ERROR = { message: 'Authentication Error' };
 

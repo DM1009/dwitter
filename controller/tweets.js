@@ -1,5 +1,6 @@
 import * as Tweets from '../data/tweets.js'
 
+
 export async function getTweets (req, res, next) {
     const username = req.query.username;
     const data = await (username ? Tweets.getUsername(username) : Tweets.getAll())
@@ -9,7 +10,7 @@ export async function getTweets (req, res, next) {
 
 export async function getTweet(req, res, next) {
     const id = req.params.id;
-    const tweet = await Tweets.getById(id);
+    const tweet = await Tweets.getId(id);
     if (tweet) {
       res.status(200).json(tweet);
     } else {
@@ -26,7 +27,7 @@ export async function getTweet(req, res, next) {
   export async function updateTweet(req, res, next) {
     const id = req.params.id;
     const text = req.body.text;
-    const tweet = await Tweets.getById(id);
+    const tweet = await Tweets.getId(id);
     if (!tweet) {
       return res.status(404).json({ message: `찾을 수 없습니다: ${id}` });
     }
@@ -39,7 +40,7 @@ export async function getTweet(req, res, next) {
   
   export async function deleteTweet(req, res, next) {
     const id = req.params.id;
-    const tweet = await Tweets.getById(id);
+    const tweet = await Tweets.getId(id);
     if (!tweet) {
       return res.status(404).json({ message: `트윗을 찾을 수 없습니다 : ${id}` });
     }

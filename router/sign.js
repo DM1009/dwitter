@@ -2,12 +2,12 @@ import express from 'express';
 import {} from 'express-async-errors';
 import { body } from 'express-validator';
 import { validate } from '../middleware/validator.js';
-import * as authController from '../controller/auth.js';
-import { isAuth } from '../middleware/auth.js';
+import * as authController from '../controller/sign.js';
+import { isAuth } from '../middleware/sign.js';
 
 const router = express.Router();
 
-const validate = [
+const validateUsername = [
   body('username')
     .trim()
     .notEmpty()
@@ -21,7 +21,7 @@ const validate = [
 ];
 
 const validateSignup = [
-  ...validate,
+  ...validateUsername,
   body('name').notEmpty().withMessage('name is missing'),
   body('email').isEmail().normalizeEmail().withMessage('invalid email'),
   body('url')
@@ -32,7 +32,7 @@ const validateSignup = [
 ];
 router.post('/signup', validateSignup, authController.signup);
 
-router.post('/login', validate, authController.login);
+router.post('/login', validateUsername, authController.login);
 
 router.get('/me', isAuth, authController.me);
 
