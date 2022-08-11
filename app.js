@@ -11,10 +11,14 @@ import {sequelize} from './db/database.js';
 
 
 const app = express()
+const corsOption = {
+  origin: config.cors.allowedOrigin,
+  optionsSuccessStatus: 200,
+};
 
 app.use(express.json());
 app.use(helmet());
-app.use(cors());
+app.use(cors(corsOption));
 app.use(morgan('tiny'));
 
 
@@ -32,7 +36,8 @@ app.use((req, res, next) => {
 
   sequelize.sync()
   .then(() => {
-    app.listen(8080)
+    console.log(`서버 시장됨... ${new Date()}`);
+    app.listen(config.port)
   })
 
 
