@@ -6,7 +6,7 @@ import signRouter from './router/sign.js'
 import cors from 'cors';
 import morgan from 'morgan';
 import helmet from 'helmet';
-import {db} from './db/database.js';
+import {sequelize} from './db/database.js';
 
 
 
@@ -30,9 +30,10 @@ app.use((req, res, next) => {
     res.sendStatus(500);
   });
 
-  db.getConnection()
-  .then((connection) => console.log(connection))
+  sequelize.sync()
+  .then(() => {
+    app.listen(8080)
+  })
 
-app.listen(8080)
 
 
