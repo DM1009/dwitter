@@ -25,7 +25,7 @@ app.use(morgan('tiny'));
 app.use('/tweets', tweetsRouter)
 app.use('/sign', signRouter)
 
-app.use((req, res, next) => {
+app.use((req, res, next) => { 
     res.sendStatus(404);
   });
   
