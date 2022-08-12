@@ -34,6 +34,6 @@ app.use((req, res, next) => {
     res.sendStatus(500);
   });
 
-  app.listen(config.db.port)  
+  app.listen(config.port)  
 
 
