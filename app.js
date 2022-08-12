@@ -37,7 +37,7 @@ app.use((req, res, next) => {
   sequelize.sync()
   .then(() => {
     console.log(`서버 시장됨... ${new Date()}`);
-    app.listen(config.port || 8080, '0.0.0.0')  
+    app.listen(config.port || 8080)  
   })
   
 
