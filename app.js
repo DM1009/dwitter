@@ -6,7 +6,7 @@ import signRouter from './router/sign.js'
 import cors from 'cors';
 import morgan from 'morgan';
 import helmet from 'helmet';
-import {sequelize} from './db/database.js';
+
 
 
 
@@ -34,11 +34,6 @@ app.use((req, res, next) => {
     res.sendStatus(500);
   });
 
-  sequelize.sync()
-  .then(() => {
-    console.log(`서버 시장됨... ${new Date()}`);
-    app.listen(config.port || 8080)  
-  })
-  
+  app.listen(config.port || 8080)  
 
 
